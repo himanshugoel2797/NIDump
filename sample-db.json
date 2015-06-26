@@ -1,0 +1,164 @@
+{
+	"SceIofilemgr": {
+		"nid": 0,
+		"modules": {
+			"SceIofilemgr": {
+				"nid": 0,
+				"kernel": false,
+				"functions": {
+					"sceIoClose": 3339421830,
+					"sceIoDclose": 1110057498,
+					"sceIoGetPriority": 4070863521,
+					"sceIoGetProcessDefaultPriority": 231010747,
+					"sceIoGetThreadDefaultPriority": 2708917507,
+					"sceIoLseek32": 1227172763,
+					"sceIoRead": 4256375443,
+					"sceIoSetPriority": 347264364,
+					"sceIoSetProcessDefaultPriority": 2133506991,
+					"sceIoSetThreadDefaultPriority": 1227956488,
+					"sceIoSyncByFd": 374419289,
+					"sceIoWrite": 888133750
+				},
+				"variables": {
+				}
+			},
+			"SceLibKernel": {
+				"nid": 0,
+				"kernel": false,
+				"functions": {
+					"sceIoChstat": 692596607,
+					"sceIoChstatByFd": 1854945970,
+					"sceIoDevctl": 78843058,
+					"sceIoDopen": 2837986768,
+					"sceIoDread": 2626381348,
+					"sceIoGetstat": 3164976675,
+					"sceIoGetstatByFd": 1475923237,
+					"sceIoIoctl": 1420537082,
+					"sceIoLseek": 2579109694,
+					"sceIoMkdir": 2523976607,
+					"sceIoOpen": 1818274913,
+					"sceIoPread": 1378966231,
+					"sceIoPwrite": 2415916456,
+					"sceIoRemove": 3792621811,
+					"sceIoRename": 4147635049,
+					"sceIoRmdir": 3925417672,
+					"sceIoSync": 2561469805,
+					"sceKernelBacktrace": 2302687208,
+					"sceKernelBacktraceSelf": 3513516976,
+					"sceKernelCallModuleExit": 367174749,
+					"sceKernelChangeCurrentThreadAttr": 914571155,
+					"sceKernelCheckThreadStack": 2215194576,
+					"sceKernelCreateThread": 3317767911,
+					"sceKernelExitProcess": 1972754858,
+					"sceKernelGetOpenPsId": 639511604,
+					"sceKernelGetProcessTime": 1279685311,
+					"sceKernelGetProcessTimeLow": 3925439409,
+					"sceKernelGetProcessTimeWide": 2970665251,
+					"sceKernelGetRWLockInfo": 127555387,
+					"sceKernelGetSemaInfo": 1499283366,
+					"sceKernelGetSystemInfo": 3760463786,
+					"sceKernelGetTLSAddr": 2996169569,
+					"sceKernelGetThreadCpuAffinityMask": 2354555946,
+					"sceKernelGetThreadCurrentPriority": 3308951624,
+					"sceKernelGetThreadExitStatus": 3587974852,
+					"sceKernelGetThreadId": 263811833,
+					"sceKernelGetThreadInfo": 2375832673,
+					"sceKernelGetThreadRunStatus": 3601862675,
+					"sceKernelLoadModule": 3152552277,
+					"sceKernelLoadStartModule": 768363258
+				}
+			},
+			"SceLibc": {
+				"nid":1450899879,
+				"kernel":false,
+				"functions": {
+					"strlen": 2330773619,
+					"printf": 2583709312,
+					"puts": 1506009457,
+					"sprintf": 1950987097,
+					"vsnprintf": 4270060260,
+					"malloc": 2002390194,
+					"free": 1536931842,
+					"memalign": 2838904427,
+					"memcpy": 1912979419,
+					"memset": 1841426648,
+					"strcmp": 458816059,
+					"strcat": 339016262,
+					"strcpy": 2243503287,
+					"rand": 3230152805
+				}
+			}
+		}
+	},
+	"SceModulemgr": {
+		"nid": 98,
+		"modules": {
+			"SceModulemgr": {
+				"nid": 99,
+				"kernel": false,
+				"functions": {
+					"sceKernelGetModuleIdByAddr": 4118383740,
+					"sceKernelGetModuleInfo": 911760815,
+					"sceKernelGetModuleList": 787634207
+				},
+				"variables": {
+				}
+			}
+		}
+	},
+	"SceDisplay": {
+		"nid": 100,
+		"modules": {
+			"SceDisplay": {
+				"nid": 101,
+				"kernel": false,
+				"functions": {
+					"sceDisplayGetFrameBuf": 1118727100,
+					"sceDisplaySetFrameBuf": 2051083108,
+					"sceDisplayWaitVblankStart": 1469442200
+				}
+			}
+		}
+	},
+	"SceGxm": {
+		"nid": 102,
+		"modules": {
+			"SceGxm": {
+				"nid": 103,
+				"kernel": false,
+				"functions": {
+					"sceGxmMapMemory": 3323868412,
+					"sceGxmUnmapMemory": 2190239976,
+					"sceGxmInitialize": 2968642796,
+					"sceGxmTerminate": 3056066150
+				}
+			}
+		}
+	},
+	"SceSysmem": {
+		"nid": 104,
+		"modules": {
+			"SceSysmem": {
+				"nid": 105,
+				"kernel": false,
+				"functions": {
+					"sceKernelAllocMemBlock": 3117804510,
+					"sceKernelGetMemBlockBase": 3102693400
+				}
+			}
+		}
+	},
+	"SceCtrl": {
+		"nid": 106,
+		"modules": {
+			"SceCtrl": {
+				"nid": 107,
+				"kernel": false,
+				"functions": {
+					"sceCtrlPeekBufferPositive": 2848181974,
+					"sceCtrlSetSamplingMode": 2761404752
+				}
+			}
+		}
+	}
+}

@@ -12,37 +12,37 @@
 // with some character in pat.
 // this algorithm runs in alphabet_len+patlen time.
 void make_delta1(int *delta1, SceUInt8 *pat, SceInt32 patlen) {
-    int i;
-    for (i=0; i < ALPHABET_LEN; i++) {
-        delta1[i] = NOT_FOUND;
-    }
-    for (i=0; i < patlen-1; i++) {
-        delta1[pat[i]] = patlen-1 - i;
-    }
+  int i;
+  for (i=0; i < ALPHABET_LEN; i++) {
+    delta1[i] = NOT_FOUND;
+  }
+  for (i=0; i < patlen-1; i++) {
+    delta1[pat[i]] = patlen-1 - i;
+  }
 }
 
 // true if the suffix of word starting from word[pos] is a prefix
 // of word
 int is_prefix(SceUInt8 *word, int wordlen, int pos) {
-    int i;
-    int suffixlen = wordlen - pos;
-    // could also use the strncmp() library function here
-    for (i = 0; i < suffixlen; i++) {
-        if (word[i] != word[pos+i]) {
-            return 0;
-        }
+  int i;
+  int suffixlen = wordlen - pos;
+  // could also use the strncmp() library function here
+  for (i = 0; i < suffixlen; i++) {
+    if (word[i] != word[pos+i]) {
+      return 0;
     }
-    return 1;
+  }
+  return 1;
 }
 
 // length of the longest suffix of word ending on word[pos].
 // suffix_length("dddbcabc", 8, 4) = 2
 int suffix_length(SceUInt8 *word, int wordlen, int pos) {
-    int i;
-    // increment suffix length i to the first mismatch or beginning
-    // of the word
-    for (i = 0; (word[pos-i] == word[wordlen-1-i]) && (i < pos); i++);
-    return i;
+  int i;
+  // increment suffix length i to the first mismatch or beginning
+  // of the word
+  for (i = 0; (word[pos-i] == word[wordlen-1-i]) && (i < pos); i++);
+  return i;
 }
 
 // delta2 table: given a mismatch at pat[pos], we want to align
@@ -81,50 +81,64 @@ int suffix_length(SceUInt8 *word, int wordlen, int pos) {
 // unique, we want to take the minimum value, which will tell us
 // how far away the closest potential match is.
 void make_delta2(int *delta2, SceUInt8 *pat, SceInt32 patlen) {
-    int p;
-    int last_prefix_index = patlen-1;
+  int p;
+  int last_prefix_index = patlen-1;
 
-    // first loop
-    for (p=patlen-1; p>=0; p--) {
-        if (is_prefix(pat, patlen, p+1)) {
-            last_prefix_index = p+1;
-        }
-        delta2[p] = last_prefix_index + (patlen-1 - p);
+  // first loop
+  for (p=patlen-1; p>=0; p--) {
+    if (is_prefix(pat, patlen, p+1)) {
+      last_prefix_index = p+1;
     }
+    delta2[p] = last_prefix_index + (patlen-1 - p);
+  }
 
-    // second loop
-    for (p=0; p < patlen-1; p++) {
-        int slen = suffix_length(pat, patlen, p);
-        if (pat[p - slen] != pat[patlen-1 - slen]) {
-            delta2[patlen-1 - slen] = patlen-1 - p + slen;
-        }
+  // second loop
+  for (p=0; p < patlen-1; p++) {
+    int slen = suffix_length(pat, patlen, p);
+    if (pat[p - slen] != pat[patlen-1 - slen]) {
+      delta2[patlen-1 - slen] = patlen-1 - p + slen;
     }
+  }
 }
 
 SceUInt8* boyer_moore (SceUInt8 *string, SceUInt32 stringlen, SceUInt8 *pat, SceUInt32 patlen) {
-    int i;
-    int delta1[ALPHABET_LEN];
-    int *delta2 = (int *)malloc(patlen * sizeof(int));
-    make_delta1(delta1, pat, patlen);
-    make_delta2(delta2, pat, patlen);
+  int i;
+  int delta1[ALPHABET_LEN];
+  int *delta2 = (int *)malloc(patlen * sizeof(int));
+  make_delta1(delta1, pat, patlen);
+  make_delta2(delta2, pat, patlen);
 
-    // The empty pattern must be considered specially
-    if (patlen == 0) return string;
+  // The empty pattern must be considered specially
+  if (patlen == 0) return string;
 
-    i = patlen-1;
-    while (i < stringlen) {
-        int j = patlen-1;
-        while (j >= 0 && (string[i] == pat[j])) {
-            --i;
-            --j;
-        }
-        if (j < 0) {
-            free(delta2);
-            return (string + i+1);
-        }
-
-        i += max(delta1[string[i]], delta2[j]);
+  i = patlen-1;
+  while (i < stringlen) {
+    int j = patlen-1;
+    while (j >= 0 && (string[i] == pat[j])) {
+      --i;
+      --j;
     }
-    free(delta2);
-    return NULL;
+    if (j < 0) {
+      free(delta2);
+      return (string + i+1);
+    }
+
+    i += max(delta1[string[i]], delta2[j]);
+  }
+  free(delta2);
+  return NULL;
+}
+
+char * string_rotate_right( char *s )
+{
+  size_t n = strlen( s );
+
+  if ( n > 1 )
+  {
+    char c = s[n - 1];
+    memmove( s + 1, s, n - 1 );
+    *s = c;
+  }
+
+  return ( s );
 }

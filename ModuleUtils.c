@@ -44,9 +44,9 @@ int GetModuleList(SceUID *uids, SceUInt maxUIDs)
   return numEntries;
 }
 
-int DumpAllNIDs(const char *outputFile)
+int DumpAllNIDs(SceSize size, void *outputFile)
 {
-  SceUID fp = sceIoOpen(outputFile, PSP2_O_WRONLY | PSP2_O_CREAT, 0777);
+  SceUID fp = sceIoOpen((char*)outputFile, PSP2_O_WRONLY | PSP2_O_CREAT, 0777);
 
   if(fp < 0){
     printf("Failed to create file for output: '%s'", outputFile);
@@ -78,10 +78,11 @@ int DumpAllNIDs(const char *outputFile)
   }
 
   sceIoClose(fp);
-  return numEntries;
+  menuStatusAppendBufferData("Done!\n");
+  sceKernelExitDeleteThread(0);
 }
 
-int DumpAllModules()
+int DumpAllModules(SceSize size, void *args)
 {
   SceUID moduleUIDs[MAX_LOADED_MODS];
   int numEntries = GetModuleList(moduleUIDs, MAX_LOADED_MODS);
@@ -121,4 +122,6 @@ int DumpAllModules()
       }
     }
   }
+  menuStatusAppendBufferData("Done!\n");
+  sceKernelExitDeleteThread(0);
 }

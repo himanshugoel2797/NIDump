@@ -6,7 +6,7 @@
 TARGET = nidump
 OBJS   = main.o draw.o font_data.o ModuleUtils.o menuAPI.o utils.o
 
-STUBS = libSceIofilemgr.a libSceModulemgr.a libSceDisplay.a libSceGxm.a libSceSysmem.a libSceCtrl.a
+STUBS = libSceIofilemgr.a libSceModulemgr.a libSceThreadmgr.a libSceDisplay.a libSceGxm.a libSceSysmem.a libSceCtrl.a
 
 NIDS_DB = sample-db.json
 

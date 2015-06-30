@@ -1,9 +1,9 @@
 {
 	"SceIofilemgr": {
-		"nid": 0,
+		"nid": 20,
 		"modules": {
 			"SceIofilemgr": {
-				"nid": 0,
+				"nid": 90,
 				"kernel": false,
 				"functions": {
 					"sceIoClose": 3339421830,
@@ -23,7 +23,7 @@
 				}
 			},
 			"SceLibKernel": {
-				"nid": 0,
+				"nid": 10,
 				"kernel": false,
 				"functions": {
 					"sceIoChstat": 692596607,
@@ -165,10 +165,10 @@
 			}
 		}
 		},"SceThreadmgr": {
-			"nid": 0,
+			"nid": 108,
 			"modules": {
 				"SceThreadmgr": {
-					"nid": 0,
+					"nid": 109,
 					"kernel": false,
 					"functions": {
 						"sceKernelCancelCallback": 812916466,
@@ -240,7 +240,9 @@
 						"sceKernelUnlockWriteRWLock": 3021280151,
 						"sceKernelUnregisterCallbackFromEvent": 407251729,
 						"sceKernelUnregisterCallbackFromEventAll": 2290774881,
-						"sceKernelExitThread": 210385121
+						"sceKernelExitThread": 210385121,
+						"sceFiosOverlayGetInfo": 4106663722,
+						"sceFiosOverlayGetList": 470534869
 					},
 					"variables": {
 					}

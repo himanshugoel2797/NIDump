@@ -12,7 +12,7 @@ NIDS_DB = sample-db.json
 
 PREFIX  = arm-none-eabi
 CC      = $(PREFIX)-gcc
-READELF = $(PREFIX)-readelf
+READELF = $(PREFIX)-readaelf
 OBJDUMP = $(PREFIX)-objdump
 CFLAGS  = -Wall -std=c99 -nostartfiles -nostdlib -I$(PSP2SDK)/include
 
@@ -22,9 +22,6 @@ all: $(TARGET).velf
 
 $(TARGET).velf: $(TARGET).elf
 	$(PSP2SDK)/bin/vita-elf-create $(TARGET).elf $(TARGET).velf $(NIDS_DB)
-#	$(READELF) -a $(TARGET).velf
-#	$(OBJDUMP) -D -j .text.fstubs $(TARGET).velf
-#	$(OBJDUMP) -s -j .data.vstubs -j .sceModuleInfo.rodata -j .sceLib.ent -j .sceExport.rodata -j .sceLib.stubs -j .sceImport.rodata -j .sceFNID.rodata -j .sceFStub.rodata -j .sceVNID.rodata -j .sceVStub.rodata -j .sce.rel $(TARGET).velf
 
 $(TARGET).elf: $(OBJS) $(STUBS_FULL)
 	$(CC) -Wl,-q -o $@ $^ $(CFLAGS)

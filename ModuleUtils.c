@@ -46,6 +46,8 @@ int GetModuleList(SceUID *uids, SceUInt maxUIDs)
 
 int DumpAllNIDs(SceSize size, void *outputFile)
 {
+  menuStatusAppendBufferData("Dumping NIDs...\n");
+
   SceUID fp = sceIoOpen((char*)outputFile, PSP2_O_WRONLY | PSP2_O_CREAT, 0777);
 
   if(fp < 0){
@@ -84,6 +86,8 @@ int DumpAllNIDs(SceSize size, void *outputFile)
 
 int DumpAllModules(SceSize size, void *args)
 {
+  menuStatusAppendBufferData("Dumping Modules...\n");
+
   SceUID moduleUIDs[MAX_LOADED_MODS];
   int numEntries = GetModuleList(moduleUIDs, MAX_LOADED_MODS);
 

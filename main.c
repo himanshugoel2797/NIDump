@@ -22,7 +22,6 @@
 
 
 int exitStatus = 0;
-
 void exitHandler(SceCtrlData pad)
 {
 	if(pad.buttons & PSP2_CTRL_CROSS)exitStatus = 1;
@@ -31,22 +30,18 @@ void exitHandler(SceCtrlData pad)
 void dumpNIDs(SceCtrlData pad)
 {
 	if(pad.buttons & PSP2_CTRL_CROSS){
-		menuStatusAppendBufferData("Dumping NIDs...\n");
-		SceUID thid = sceKernelCreateThread("DumpAllNIDs", DumpAllNIDs, 0x10000100, 0x10000, 0, 0, NULL);
-		sceKernelStartThread(thid, strlen(NID_LIST_OUT_PATH), NID_LIST_OUT_PATH);
+		DumpAllNIDs(NID_LIST_OUT_PATH);
 	}
 }
 
 void dumpModules(SceCtrlData pad)
 {
 	if(pad.buttons & PSP2_CTRL_CROSS){
-		menuStatusAppendBufferData("Dumping Modules...");
-		SceUID thid = sceKernelCreateThread("DumpAllModules", DumpAllModules, 0x10000100, 0x10000, 0, 0, NULL);
-		sceKernelStartThread(thid, 0, NULL);
+		DumpAllModules();
 	}
 }
 
-#define  ENTRY_COUNT 4
+#define  ENTRY_COUNT 3
 
 void startMenu()
 {
@@ -57,8 +52,6 @@ void startMenu()
 	entries[0].value = "Dump NIDs to file";
 	entries[1].handler = &dumpModules;
 	entries[1].value = "Dump modules to file";
-	entries[2].handler = &dumpModules;
-	entries[2].value = "File Manager";
 	entries[ENTRY_COUNT - 1].handler = &exitHandler;
 	entries[ENTRY_COUNT - 1].value = "Exit";
 

@@ -44,7 +44,7 @@ int GetModuleList(SceUID *uids, SceUInt maxUIDs)
   return numEntries;
 }
 
-int DumpAllNIDs(SceSize size, void *outputFile)
+int DumpAllNIDs(char *outputFile)
 {
   menuStatusAppendBufferData("Dumping NIDs...\n");
 
@@ -84,7 +84,7 @@ int DumpAllNIDs(SceSize size, void *outputFile)
   sceKernelExitDeleteThread(0);
 }
 
-int DumpAllModules(SceSize size, void *args)
+int DumpAllModules()
 {
   menuStatusAppendBufferData("Dumping Modules...\n");
 

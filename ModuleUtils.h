@@ -140,8 +140,8 @@ typedef struct
 
 int GetModuleList(SceUID *uids, SceUInt maxUIDs);
 
-int DumpAllNIDs(SceSize size,void* outputFile);
-int DumpAllModules(SceSize size, void* args);
+int DumpAllNIDs(char* outputFile);
+int DumpAllModules();
 SceModuleInfo* FindModuleInfo(loaded_module_info_t *loadedModule);
 
 #endif

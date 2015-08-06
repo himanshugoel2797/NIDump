@@ -1,0 +1,8 @@
+stubs/
+.clang_complete
+.tags
+*.a
+*.o
+*.S
+*.elf
+*.velf

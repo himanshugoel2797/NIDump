@@ -147,7 +147,8 @@
 				"kernel": false,
 				"functions": {
 					"sceKernelAllocMemBlock": 3117804510,
-					"sceKernelGetMemBlockBase": 3102693400
+					"sceKernelGetMemBlockBase": 3102693400,
+					"sceKernelFreeMemBlock": 2837321198
 				}
 			}
 		}

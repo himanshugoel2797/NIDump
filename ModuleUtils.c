@@ -107,7 +107,7 @@ int DumpAllModules()
 
         for(int segment_index = 0; segment_index < SEGMENT_COUNT; segment_index++){
           char filename[MODULE_FILENAME_LENGTH];
-          strcpy(filename, "pss0:/top/Documents/");
+          strcpy(filename, "cache0:VitaDefilerClient/Documents/");
           strcat(filename, m_moduleInfo->name);
           char int_val[2];
           sprintf(int_val, "_%d", segment_index);
